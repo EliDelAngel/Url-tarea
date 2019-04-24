@@ -1,0 +1,36 @@
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+ 
+
+public class main extends JFrame{
+   
+    public main() throws IOException {
+       
+        super("ImagenURL"); //establece nombre a JFrame
+        URL url = new URL("https://pbs.twimg.com/media/"
+                + "D4y8BOaW0AM74Gj.jpg");
+       
+        Image image = ImageIO.read(url);
+       
+        //Creal el JLabel y ingresa la imagen sobre el.
+        JLabel label = new JLabel(new ImageIcon(image));
+ 
+        //Establece las barras de desplazamiento de la imagen
+        JScrollPane scroll = new JScrollPane(label);
+        add(scroll);
+    }
+   
+    public static void main(String[] args) throws IOException {
+        main imagen = new main();
+        imagen.setSize(400, 400);
+        imagen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        imagen.setVisible(true);
+        imagen.setLocationRelativeTo(null);
+    }
+}
